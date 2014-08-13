@@ -1,0 +1,30 @@
+package chapter1;
+
+public class Chpt1_1 {
+	public static void main(String[] args){
+		
+		boolean isUnique = isUnique(null);
+		System.out.println(isUnique);
+	}
+	
+	public static boolean isUnique(String str){
+		/* ask if Unicode or ASCII
+		 * this is for ASCII (256)
+		 * some cases: null returns false and emtpy string return true
+		 * time O(n),  space O(1)
+		 */
+		if (str == null) return false;
+		if (str.length() > 256) return false;
+		
+		boolean[] result = new boolean[256];
+		for(int i = 0; i < str.length(); i++){
+			int val = str.charAt(i);
+			if (result[val]) //not unique
+				return false;
+			result[val] = true;
+		}
+		return true;
+	}
+	
+}
+
